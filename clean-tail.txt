@@ -1,0 +1,96 @@
+
+  // Exam / Results
+  if (q.includes('exam') || q.includes('result') || q.includes('notification') || q.includes('timetable') || q.includes('time table')) {
+    const exam = SIETK_KNOWLEDGE_BASE.examCell
+    return `## Exam Cell Information 📝
+
+**Controller of Examinations:**
+- Name: ${exam.controller.name}
+- Qualification: ${exam.controller.qualification}
+- Phone: ${exam.controller.phone}
+- Email: ${exam.controller.email}
+
+**Current Notifications (2025-26):**
+${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('\n')}
+
+**For Results:** Visit http://siddharthgroup.ac.in/resultpage.html
+
+📞 Contact: ${exam.email}`
+  }
+
+  // Regulation / Syllabus / Curriculum
+  if (q.includes('regulation') || q.includes('syllabus') || q.includes('curriculum') || q.includes('r20') || q.includes('r23')) {
+    return `## SIETK Syllabus & Regulations 📚
+
+**Direct Download Links:**
+
+**B.Tech Syllabus (Autonomous):**
+- **R20 Regulation:** [Download R20 Syllabus PDF](https://sietk.org/syllabus-ug.php)
+- **R23 Regulation:** [Download R23 Syllabus PDF](https://sietk.org/syllabus-ug.php)
+- **Previous Regulations (R19/R18):** [Archives](https://sietk.org/syllabus-ug.php)
+
+**PG Syllabus (MBA/MCA/M.Tech):**
+- [Download PG Syllabus](https://sietk.org/syllabus-pg.php)
+
+**Academic Regulations:**
+- [View All Regulations](https://sietk.org/academic-regulations.php)
+
+**Note:** The college website hosts these PDFs. If a link doesn't open, please visit https://sietk.org and check the 'Academics' menu.`
+  }
+
+  // Contact / Location
+  if (q.includes('contact') || q.includes('phone') || q.includes('address') || q.includes('location') || q.includes('coordinate') || q.includes('map') || q.includes('where')) {
+    const about = SIETK_KNOWLEDGE_BASE.about
+    return `## SIETK Location & Contact 📍
+
+**Address:**
+${about.location}
+
+**GPS Coordinates:**
+- Latitude: ${about.coordinates.latitude}
+- Longitude: ${about.coordinates.longitude}
+
+**[Open in Google Maps](${about.coordinates.googleMapsLink})**
+
+**Distance from Tirupati:** ${about.distanceFromTirupati}
+
+**Contact Details:**
+- Phone: ${about.phone}
+- Email: ${about.email}
+- Website: ${about.website}
+
+**Other Contacts:**
+- Admissions: 08577-264999
+- Placements: 9000220230
+- Exam Cell: +91-9396931333`
+  }
+
+  // Facilities
+  if (q.includes('facility') || q.includes('infrastructure') || q.includes('lab') || q.includes('library') || q.includes('hostel')) {
+    return `## SIETK Facilities & Infrastructure 🏫
+
+**Campus Facilities:**
+${SIETK_KNOWLEDGE_BASE.facilities.map(f => `- ${f}`).join('\n')}
+
+**Special Features:**
+- 30-acre campus amid Eastern Ghats hills
+- IIT Tirupati collaboration for CSE mentorship
+- AICTE IDEA Lab
+
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+  }
+
+  return null
+}
+
+// Get system prompt for the chatbot
+export function getSystemPrompt(): string {
+  return `You are an AI assistant for Siddharth Institute of Engineering and Technology (SIETK), Puttur.
+Your goal is to provide accurate information to students, parents, and faculty.
+
+Use the following knowledge base to answer questions:
+
+${JSON.stringify(SIETK_KNOWLEDGE_BASE, null, 2)}
+
+If the information is not in the knowledge base, say "I don't have that information, please check the official website https://sietk.org".`
+}
