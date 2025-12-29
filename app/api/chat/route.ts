@@ -37,27 +37,82 @@ export async function POST(req: Request) {
       return createStreamResponse(cachedResponse)
     }
 
-    // 🔍 2. TIERED RETRIEVAL (KB First -> Web Fallback)
-    console.log(`[${requestId}] Starting Tiered Retrieval...`)
-    const retrieval = await tieredRetrieval(userQuery)
+    // 🧠 2. INTENT CLASSIFICATION (The "Router")
+    // We use a cheap heuristic or fast LLM check to see if we need to search.
+    // For speed, let's use a keyword heuristic + fast pattern matching first.
+    // If it looks like a "Hi/Hello/Thanks" -> General.
+    // If it has "SIETK", "Fee", "Course", "Who", "What", "Principal" -> Query.
+    const isGeneralChat = /^(hi|hello|hey|greetings|thanks|thank you|good morning|good evening|bye)$/i.test(userQuery.trim())
 
-    // Quick exit for very high confidence KB matches to save tokens? 
-    // For now we feed it to LLM to ensure conversational tone, but we cite it.
+    let context = ""
+    let confidence = 0.0
 
-    // 🤖 3. LLM GENERATION WITH CIRCUIT BREAKER
-    console.log(`[${requestId}] context confidence: ${retrieval.confidence}`)
-    const prompt = buildProductionPrompt(retrieval, userQuery, messages)
+    if (isGeneralChat) {
+      console.log(`[${requestId}] Intent: GENERAL CHAT (Skipping Search)`)
+    } else {
+      console.log(`[${requestId}] Intent: QUERY (Triggering Search Engine)`)
 
+      // 🕵️ 3. PARALLEL "ALL-KNOWING" SEARCH
+      // We run KB, Exa, and Tavily ALL at once.
+      const searchResults = await runUnifiedSearch(userQuery)
+      context = searchResults.context
+      confidence = searchResults.confidence
+    }
+
+    // 🤖 4. AI SYNTHESIS (Final Conclusion)
+    const prompt = buildProductionPrompt({ content: context, confidence }, userQuery, messages)
     const answer = await generateWithFallback(prompt, apiKey)
 
-    // 💾 4. CACHE & STREAM
-    await setCache(userQuery, answer)
+    // 💾 5. CACHE & STREAM
+    if (!isGeneralChat) {
+      await setCache(userQuery, answer)
+    }
     return createStreamResponse(answer)
 
   } catch (error) {
     console.error(`[${requestId}] Critical Error:`, error)
-    return createStreamResponse("I'm experiencing high traffic. Please try asking again in a moment. (System Error)")
+    return createStreamResponse("I'm sorry, I encountered a system error. Please try again.")
   }
+}
+
+// Helper for the new "Unified Search"
+async function runUnifiedSearch(query: string) {
+  // Run KB + Exa + Tavily in PARALLEL
+  const { searchTavily } = await import("@/lib/tavily-search")
+
+  const [kbResult, webResults] = await Promise.all([
+    // 1. KB Search (Fast local)
+    Promise.resolve(searchKnowledgeBase(query)),
+
+    // 2. Web Search (Parallel External)
+    Promise.allSettled([
+      searchSIETKWebsite(query),
+      searchTavily(query)
+    ])
+  ])
+
+  // Process Web Results
+  const exa = (webResults[0].status === 'fulfilled') ? webResults[0].value : ""
+  const tavily = (webResults[1].status === 'fulfilled') ? webResults[1].value : ""
+
+  // COMBINE EVERYTHING
+  let combinedContext = ""
+
+  if (kbResult) {
+    combinedContext += `--- INTERNAL KNOWLEDGE BASE ---\n${kbResult}\n\n`
+  }
+
+  if (exa || tavily) {
+    combinedContext += `--- REAL-TIME WEB SEARCH RESULTS ---\n`
+    if (exa) combinedContext += `[Source: SIETK.org]: ${exa}\n`
+    if (tavily) combinedContext += `[Source: Google/Web]: ${tavily}\n`
+  }
+
+  // Determine Confidence
+  // If we found KB info OR Web info, we are confident.
+  const confidence = (kbResult || exa || tavily) ? 0.9 : 0.0
+
+  return { context: combinedContext, confidence }
 }
 
 // --- SUPPORT FUNCTIONS ---
