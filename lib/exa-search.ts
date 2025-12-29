@@ -37,7 +37,8 @@ export async function searchSIETKWebsite(query: string): Promise<string> {
             searchString = `${query} pdf download site:sietk.org`
         }
 
-        // Search specifically on SIETK website
+        // Search specifically on SIETK website using Domain Filtering
+        // Neural search works best with natural queries, not keyword hacking.
         const response = await fetch("https://api.exa.ai/search", {
             method: "POST",
             headers: {
@@ -45,13 +46,14 @@ export async function searchSIETKWebsite(query: string): Promise<string> {
                 "x-api-key": apiKey,
             },
             body: JSON.stringify({
-                query: searchString,
+                query: query, // Send pure query
                 numResults: 5,
-                type: "neural", // Use neural search for better semantic matching
+                type: "neural",
                 useAutoprompt: true,
+                includeDomains: ["sietk.org", "siddharthgroup.ac.in"], // Proper domain filtering
                 contents: {
                     text: {
-                        maxCharacters: 2000, // Increase context window
+                        maxCharacters: 2000,
                         includeHtmlTags: false,
                     },
                 },

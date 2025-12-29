@@ -1,4 +1,4 @@
-export async function searchTavily(query: string): Promise<string> {
+show me export async function searchTavily(query: string): Promise<string> {
     const apiKey = process.env.TAVILY_API_KEY
 
     if (!apiKey) {
