@@ -190,8 +190,9 @@ async function callGroq(prompt: string, key: string): Promise<string> {
 }
 
 function buildProductionPrompt(retrieval: any, query: string, history: any[]): string {
-  // Slice history to last 2 turns to save tokens
-  const recentHistory = history.slice(-4).map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n')
+  // Exclude the last message (current query) from history to avoid duplication
+  // Then take the last 4 messages of the unexpected history
+  const recentHistory = history.slice(0, -1).slice(-4).map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n')
 
   return `You are SIETK Assistant. Answer based on the CONTEXT provided.
   
