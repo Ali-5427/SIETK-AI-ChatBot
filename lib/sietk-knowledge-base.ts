@@ -31,8 +31,10 @@ export const SIETK_KNOWLEDGE_BASE = {
       award: "Educationist of the Year Award (2008) from WES, New Delhi"
     },
     principal: {
-      name: "Dr. C. Naga Bhaskar",
-      title: "Principal"
+      name: "Dr. Bogala Madhu",
+      title: "Principal",
+      qualification: "Ph.D. in Agricultural Engineering",
+      awards: ["Young Scientist Award", "Young Scholar Award", "University Gold Medal"]
     }
   },
 
@@ -358,7 +360,7 @@ Dr. K. Ashok Raju is the visionary founder who established Siddharth Institute o
   }
 
   // Principal
-  if (q.includes('principal') || q.includes('head of institution')) {
+  if (q.includes('principal') || q.includes('principle') || q.includes('head of institution')) {
     const mgmt = SIETK_KNOWLEDGE_BASE.management
     return `## Principal of SIETK 👨‍🏫
 

@@ -31,29 +31,52 @@ export async function POST(req: Request) {
     console.log("[AGENT] Knowledge Base result:", knowledgeBaseResult ? "Found" : "Not found")
 
 
-    // ============================================
-    // STEP 2: Search Exa for Real-Time Info
-    // ============================================
-    console.log("[AGENT] Step 2: Searching Exa API...")
-    let exaResult = ""
-    try {
-      exaResult = await searchSIETKWebsite(userQuery)
-      console.log("[AGENT] Exa result:", exaResult ? "Found" : "Not found")
 
-      // If Exa returns empty, try Tavily
-      if (!exaResult) {
-        throw new Error("Exa returned empty result")
+    // ============================================
+    // STEP 2: Parallel Web Search (Exa + Tavily)
+    // ============================================
+    console.log("[AGENT] Step 2: Running Parallel Search (Exa + Tavily)...")
+    let exaResult = ""
+    let tavilyResult = ""
+
+    try {
+      // Dynamic import for Tavily
+      const { searchTavily } = await import("@/lib/tavily-search")
+
+      // Run both searches at the same time
+      const [exaPromise, tavilyPromise] = await Promise.allSettled([
+        searchSIETKWebsite(userQuery),
+        searchTavily(userQuery)
+      ])
+
+      // Process Exa Result
+      if (exaPromise.status === "fulfilled") {
+        exaResult = exaPromise.value
+        console.log("[AGENT] Exa result: Found")
+      } else {
+        console.log("[AGENT] Exa search failed")
       }
+
+      // Process Tavily Result
+      if (tavilyPromise.status === "fulfilled") {
+        tavilyResult = tavilyPromise.value
+        console.log("[AGENT] Tavily result: Found")
+      } else {
+        console.log("[AGENT] Tavily search failed")
+      }
+
     } catch (error) {
-      console.log("[AGENT] Exa search failed or empty, switching to Tavily backup...")
-      try {
-        const { searchTavily } = await import("@/lib/tavily-search")
-        exaResult = await searchTavily(userQuery)
-        console.log("[AGENT] Tavily result:", exaResult ? "Found" : "Not found")
-      } catch (tavilyError) {
-        console.log("[AGENT] Tavily backup also failed")
-      }
+      console.error("[AGENT] Parallel search error:", error)
     }
+
+    // Combine results for the AI
+    const combinedSearchResults = `
+    --- EXA SEARCH RESULTS ---
+    ${exaResult || "No results from Exa."}
+
+    --- TAVILY SEARCH RESULTS ---
+    ${tavilyResult || "No results from Tavily."}
+    `
 
     // ============================================
     // STEP 3: Use Gemini AI to Synthesize Response
@@ -72,7 +95,7 @@ export async function POST(req: Request) {
     console.log("[AGENT] Step 3: Synthesizing with Gemini AI...")
 
     // Build the AI prompt with all gathered information
-    const aiPrompt = buildAIPrompt(userQuery, knowledgeBaseResult, exaResult, messages)
+    const aiPrompt = buildAIPrompt(userQuery, knowledgeBaseResult, combinedSearchResults, messages)
 
     // Call Gemini API
     const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
