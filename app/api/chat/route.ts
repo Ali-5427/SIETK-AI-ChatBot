@@ -30,6 +30,7 @@ export async function POST(req: Request) {
     const knowledgeBaseResult = searchKnowledgeBase(userQuery)
     console.log("[AGENT] Knowledge Base result:", knowledgeBaseResult ? "Found" : "Not found")
 
+
     // ============================================
     // STEP 2: Search Exa for Real-Time Info
     // ============================================
@@ -38,8 +39,20 @@ export async function POST(req: Request) {
     try {
       exaResult = await searchSIETKWebsite(userQuery)
       console.log("[AGENT] Exa result:", exaResult ? "Found" : "Not found")
+
+      // If Exa returns empty, try Tavily
+      if (!exaResult) {
+        throw new Error("Exa returned empty result")
+      }
     } catch (error) {
-      console.log("[AGENT] Exa search failed, continuing without it")
+      console.log("[AGENT] Exa search failed or empty, switching to Tavily backup...")
+      try {
+        const { searchTavily } = await import("@/lib/tavily-search")
+        exaResult = await searchTavily(userQuery)
+        console.log("[AGENT] Tavily result:", exaResult ? "Found" : "Not found")
+      } catch (tavilyError) {
+        console.log("[AGENT] Tavily backup also failed")
+      }
     }
 
     // ============================================
