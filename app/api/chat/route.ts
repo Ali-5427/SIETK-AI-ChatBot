@@ -1,4 +1,4 @@
-import { searchKnowledgeBase, getSystemPrompt, SIETK_KNOWLEDGE_BASE } from "@/lib/sietk-knowledge-base"
+import { getSystemPrompt } from "@/lib/Final Knowledge Base"
 import { searchAllInfoKnowledgeBase, ALL_INFO_KNOWLEDGE_BASE } from "@/lib/all-info-knowledge-base"
 import { searchSIETKWebsite } from "@/lib/exa-search"
 
@@ -24,23 +24,23 @@ export async function POST(req: Request) {
     const userQuery = latestUserMessage.content
     console.log("[AGENT] User query:", userQuery)
 
-    // ============================================
+    // ===========================================
     // STEP 0: Groq Query Analysis
-    // ============================================
+    // ===========================================
     console.log("[AGENT] Step 0: Analyzing query with Groq...")
     const groqApiKey = process.env.GROQ_API_KEY?.trim()
 
     if (!groqApiKey) {
-      console.log("[AGENT] No Groq API key, falling back to original flow")
+      console.log("[AGENT] No Groq API key for analysis, falling back to original flow")
       return await processOriginalFlow(userQuery, messages)
     }
 
     const queryAnalysis = await analyzeQueryWithGroq(userQuery, groqApiKey)
     console.log("[AGENT] Query analysis:", queryAnalysis)
 
-    // ============================================
+    // ===========================================
     // STEP 1: Conditional Information Gathering
-    // ============================================
+    // ===========================================
     let knowledgeBaseResult = null
     let exaResult = ""
 
@@ -62,108 +62,10 @@ export async function POST(req: Request) {
       }
     }
 
-    // ============================================
-    // STEP 3: Use Gemini AI to Synthesize Response
-    // ============================================
-    const geminiApiKey = process.env.GEMINI_API_KEY?.trim()
-
-    if (!geminiApiKey) {
-      console.log("[AGENT] No Gemini API key, using knowledge base only")
-      // Fallback to knowledge base or Exa result
-      const fallbackResponse = knowledgeBaseResult ||
-        "I apologize, but I don't have specific information about that. Please contact SIETK at 08577-264999 or visit https://sietk.org"
-
-      return createStreamResponse(fallbackResponse)
-    }
-
-    console.log("[AGENT] Step 3: Synthesizing with Gemini AI...")
-
-    // Build the AI prompt with all gathered information
-    const aiPrompt = buildAIPrompt(userQuery, knowledgeBaseResult, exaResult, messages)
-
-    // Call Gemini API
-    const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [{ text: aiPrompt }]
-          }
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 1024,
-        },
-        safetySettings: [
-          { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
-          { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
-          { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
-          { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
-        ],
-      }),
-    })
-
-    if (!geminiResponse.ok) {
-      const error = await geminiResponse.text()
-      console.error("[AGENT] Gemini API error:", geminiResponse.status, error)
-
-      // Try Groq API as fallback
-      console.log("[AGENT] Trying Groq API as fallback...")
-      const groqApiKey = process.env.GROQ_API_KEY?.trim()
-
-      if (groqApiKey) {
-        try {
-          const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${groqApiKey}`,
-            },
-            body: JSON.stringify({
-              model: "llama-3.1-8b-instant",
-              messages: [
-                { role: "system", content: aiPrompt },
-                { role: "user", content: userQuery }
-              ],
-              max_tokens: 1024,
-              temperature: 0.7,
-            }),
-          })
-
-          if (groqResponse.ok) {
-            const groqData = await groqResponse.json()
-            const groqAnswer = groqData.choices?.[0]?.message?.content
-            if (groqAnswer) {
-              console.log("[AGENT] Groq response generated successfully")
-              return createStreamResponse(groqAnswer)
-            }
-          } else {
-            console.error("[AGENT] Groq API also failed:", await groqResponse.text())
-          }
-        } catch (groqError) {
-          console.error("[AGENT] Groq fallback error:", groqError)
-        }
-      }
-
-      // Final fallback to knowledge base
-      const fallbackResponse = knowledgeBaseResult ||
-        "I'm having trouble processing your request. Please try again or contact SIETK at 08577-264999."
-
-      return createStreamResponse(fallbackResponse)
-    }
-
-    const geminiData = await geminiResponse.json()
-    const aiResponse = geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "I couldn't generate a response. Please try again."
-
-    console.log("[AGENT] Gemini response generated successfully")
-
-    return createStreamResponse(aiResponse)
+    // ===========================================
+    // STEP 2: Synthesize Final Response
+    // ===========================================
+    return await generateFinalResponse(userQuery, knowledgeBaseResult, exaResult, messages)
 
   } catch (error) {
     console.error("[AGENT] Error:", error)
@@ -172,6 +74,92 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "application/json" },
     })
   }
+}
+
+// Swapped the priority to Groq (Primary) and Gemini (Fallback)
+async function generateFinalResponse(
+  userQuery: string,
+  knowledgeBaseResult: string | null,
+  exaResult: string,
+  messages: Array<{ role: string; content: string }>
+): Promise<Response> {
+  const groqApiKey = process.env.GROQ_API_KEY?.trim();
+  const geminiApiKey = process.env.GEMINI_API_KEY?.trim();
+  // Using buildAIPrompt as it's the one used in the original functional code
+  const aiPrompt = buildAIPrompt(userQuery, knowledgeBaseResult, exaResult, messages);
+
+  // Primary: Groq
+  if (groqApiKey) {
+    console.log("[AGENT] Step 3: Synthesizing with Groq AI (Primary)...");
+    try {
+      const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${groqApiKey}`,
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          messages: [
+            { role: "system", content: aiPrompt },
+            { role: "user", content: userQuery }
+          ],
+          max_tokens: 1024,
+          temperature: 0.7,
+        }),
+      });
+
+      if (groqResponse.ok) {
+        const groqData = await groqResponse.json();
+        const groqAnswer = groqData.choices?.[0]?.message?.content;
+        if (groqAnswer) {
+          console.log("[AGENT] Groq response generated successfully");
+          return createStreamResponse(groqAnswer);
+        }
+      }
+      console.error("[AGENT] Groq API failed or returned empty response:", groqResponse.status, await groqResponse.text());
+    } catch (groqError) {
+      console.error("[AGENT] Groq primary call error:", groqError);
+    }
+  }
+
+  // Fallback: Gemini
+  if (geminiApiKey) {
+    console.log("[AGENT] Falling back to Gemini AI...");
+    try {
+      const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: aiPrompt }] }],
+          generationConfig: { temperature: 0.7, topK: 40, topP: 0.95, maxOutputTokens: 1024 },
+          safetySettings: [
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
+            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
+          ],
+        }),
+      });
+
+      if (geminiResponse.ok) {
+        const geminiData = await geminiResponse.json();
+        const aiResponse = geminiData.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (aiResponse) {
+          console.log("[AGENT] Gemini fallback response generated successfully");
+          return createStreamResponse(aiResponse);
+        }
+      }
+      console.error("[AGENT] Gemini fallback API error:", geminiResponse.status, await geminiResponse.text());
+    } catch (geminiError) {
+      console.error("[AGENT] Gemini fallback call error:", geminiError);
+    }
+  }
+
+  // Final fallback if both fail
+  console.log("[AGENT] All AI models failed. Using knowledge base only.");
+  const finalFallbackResponse = knowledgeBaseResult || "I'm having trouble processing your request. Please try again or contact SIETK at 08577-264999.";
+  return createStreamResponse(finalFallbackResponse);
 }
 
 // Analyze query with Groq to determine processing needs
@@ -237,20 +225,17 @@ Respond with JSON only:
   }
 }
 
-// Fallback to original flow when Groq is not available
+// Fallback to original flow when Groq is not available for analysis
 async function processOriginalFlow(userQuery: string, messages: Array<{ role: string; content: string }>): Promise<Response> {
-  console.log("[AGENT] Using original flow (no Groq API key)")
+  console.log("[AGENT] Using original flow (no Groq API key for analysis)")
 
-  // ============================================
-  // STEP 1: Search Knowledge Base
-  // ============================================
+  // ===========================================
+  // STEP 1: Search Knowledge Base & Exa API
+  // ===========================================
   console.log("[AGENT] Step 1: Searching Knowledge Base...")
   const knowledgeBaseResult = searchAllInfoKnowledgeBase(userQuery)
   console.log("[AGENT] Knowledge Base result:", knowledgeBaseResult ? "Found" : "Not found")
 
-  // ============================================
-  // STEP 2: Search Exa for Real-Time Info
-  // ============================================
   console.log("[AGENT] Step 2: Searching Exa API...")
   let exaResult = ""
   try {
@@ -260,92 +245,10 @@ async function processOriginalFlow(userQuery: string, messages: Array<{ role: st
     console.log("[AGENT] Exa search failed, continuing without it")
   }
 
-  // ============================================
-  // STEP 3: Use Gemini AI to Synthesize Response
-  // ============================================
-  const geminiApiKey = process.env.GEMINI_API_KEY?.trim()
-
-  if (!geminiApiKey) {
-    console.log("[AGENT] No Gemini API key, using knowledge base only")
-    const fallbackResponse = knowledgeBaseResult ||
-      "I apologize, but I don't have specific information about that. Please contact SIETK at 08577-264999 or visit https://sietk.org"
-    return createStreamResponse(fallbackResponse)
-  }
-
-  console.log("[AGENT] Step 3: Synthesizing with Gemini AI...")
-  const aiPrompt = buildAIPrompt(userQuery, knowledgeBaseResult, exaResult, messages)
-
-  const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: aiPrompt }] }],
-      generationConfig: {
-        temperature: 0.7,
-        topK: 40,
-        topP: 0.95,
-        maxOutputTokens: 1024,
-      },
-      safetySettings: [
-        { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_ONLY_HIGH" },
-        { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_ONLY_HIGH" },
-        { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_ONLY_HIGH" },
-        { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_ONLY_HIGH" },
-      ],
-    }),
-  })
-
-  if (!geminiResponse.ok) {
-    const error = await geminiResponse.text()
-    console.error("[AGENT] Gemini API error:", geminiResponse.status, error)
-
-    // Try Groq API as fallback
-    const groqApiKey = process.env.GROQ_API_KEY?.trim()
-    if (groqApiKey) {
-      try {
-        const groqFallbackResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${groqApiKey}`,
-          },
-          body: JSON.stringify({
-            model: "llama-3.1-8b-instant",
-            messages: [
-              { role: "system", content: aiPrompt },
-              { role: "user", content: userQuery }
-            ],
-            max_tokens: 1024,
-            temperature: 0.7,
-          }),
-        })
-
-        if (groqFallbackResponse.ok) {
-          const groqData = await groqFallbackResponse.json()
-          const groqAnswer = groqData.choices?.[0]?.message?.content
-          if (groqAnswer) {
-            console.log("[AGENT] Groq fallback response generated successfully")
-            return createStreamResponse(groqAnswer)
-          }
-        }
-      } catch (groqError) {
-        console.error("[AGENT] Groq fallback error:", groqError)
-      }
-    }
-
-    const fallbackResponse = knowledgeBaseResult ||
-      "I'm having trouble processing your request. Please try again or contact SIETK at 08577-264999."
-    return createStreamResponse(fallbackResponse)
-  }
-
-  const geminiData = await geminiResponse.json()
-  const aiResponse = geminiData.candidates?.[0]?.content?.parts?.[0]?.text ||
-    "I couldn't generate a response. Please try again."
-
-  console.log("[AGENT] Gemini response generated successfully")
-  return createStreamResponse(aiResponse)
+  // ===========================================
+  // STEP 3: Synthesize Final Response
+  // ===========================================
+  return await generateFinalResponse(userQuery, knowledgeBaseResult, exaResult, messages);
 }
 
 // Build Groq prompt with all gathered information
@@ -624,7 +527,7 @@ Respond with JSON only:
     console.log("[HYBRID] Step 2: Structured Search with AI guidance...")
     
     // Step 2: Use AI-guided keywords for structured search
-    let searchResult = searchAllInfoKnowledgeBase(userQuery)
+    let searchResult = getSystemPrompt();
     
     // If no result, try with AI-suggested keywords
     if (!searchResult && searchStrategy.keywords.length > 0) {
@@ -704,4 +607,3 @@ IMPORTANT: Use only information from the provided knowledge base. Do not make up
     return searchAllInfoKnowledgeBase(userQuery)
   }
 }
-  
