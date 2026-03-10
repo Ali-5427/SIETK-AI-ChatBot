@@ -1,11 +1,21 @@
-
-import { SIETK_KNOWLEDGE } from './sietk_knowledge_base';
+import { SIETK_KNOWLEDGE_BASE } from './sietk_knowledge_base';
 import { FACULTY_DATA } from './faculty_data';
 import { CURRICULUM_DATA } from './curriculum_data';
 
 // A type guard to check if a key exists in an object
 function isValidKey<T extends object>(obj: T, key: string | number | symbol): key is keyof T {
   return key in obj;
+}
+
+// Helper function to correctly format the output of findData
+function processFindDataResult(result: any): string | null {
+    if (!result) {
+        return null;
+    }
+    if (typeof result === 'string') {
+        return result;
+    }
+    return JSON.stringify(result, null, 2);
 }
 
 // Main function to search the entire knowledge base
@@ -21,13 +31,14 @@ export function searchKnowledgeBase(query: string, department?: string, category
       case 'syllabus':
         return searchCurriculum(lowerQuery, department);
       case 'fees':
-        return findData(SIETK_KNOWLEDGE.fees_and_scholarships, lowerQuery);
+        // Fee information is spread out, so we search the whole knowledge base
+        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE, lowerQuery));
       case 'admissions':
-        return findData(SIETK_KNOWLEDGE.admissions, lowerQuery);
+        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.admissions, lowerQuery));
       case 'placements':
-        return findData(SIETK_KNOWLEDGE.placements, lowerQuery);
+        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.placements_and_training, lowerQuery));
       case 'contact':
-        return findData(SIETK_KNOWLEDGE.college.location, lowerQuery);
+        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.college_overview, lowerQuery));
     }
   }
 
@@ -39,18 +50,18 @@ export function searchKnowledgeBase(query: string, department?: string, category
     return searchCurriculum(lowerQuery, department);
   }
   if (lowerQuery.includes('fee') || lowerQuery.includes('scholarship')) {
-    return JSON.stringify(SIETK_KNOWLEDGE.fees_and_scholarships, null, 2);
+    return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE, lowerQuery));
   }
   if (lowerQuery.includes('admission') || lowerQuery.includes('intake')) {
-    return JSON.stringify(SIETK_KNOWLEDGE.admissions, null, 2);
+    return JSON.stringify(SIETK_KNOWLEDGE_BASE.admissions, null, 2);
   }
    if (lowerQuery.includes('placement') || lowerQuery.includes('recruiter')) {
-    return JSON.stringify(SIETK_KNOWLEDGE.placements, null, 2);
+    return JSON.stringify(SIETK_KNOWLEDGE_BASE.placements_and_training, null, 2);
   }
 
   // Fallback to a general search across the main knowledge base
-  const result = findData(SIETK_KNOWLEDGE, lowerQuery);
-  return result ? JSON.stringify(result, null, 2) : null;
+  const result = findData(SIETK_KNOWLEDGE_BASE, lowerQuery);
+  return processFindDataResult(result);
 }
 
 // Specialized function to search faculty data
