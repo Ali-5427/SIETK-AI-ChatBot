@@ -1,4 +1,4 @@
-﻿// Comprehensive SIETK Knowledge Base - Last Updated: 2025-12-26 20:40
+// Comprehensive SIETK Knowledge Base - Last Updated: 2025-12-26 20:40
 // Generated from website crawler data
 
 export const SIETK_KNOWLEDGE_BASE = {
@@ -186,7 +186,7 @@ export const SIETK_KNOWLEDGE_BASE = {
       qualification: "M.Tech., (Ph.D.)",
       phone: "+91-9396931333",
       email: "coesietk@siddharthgroup.ac.in"
-    },
+.      },
     additionalControllers: [
       { name: "D. Muneendra", qualification: "M.Tech", phone: "9849897895" },
       { name: "Madhu D", qualification: "M.Tech(Ph.D)", phone: "+91-9492659320" },
@@ -315,13 +315,15 @@ export function searchKnowledgeBase(query: string): string | null {
 - **Placement Rate:** ${plc.stats.placementRate}
 
 **Top Recruiters:**
-${plc.stats.topRecruiters.map(r => `- ${r}`).join('\n')}
+${plc.stats.topRecruiters.map(r => `- ${r}`).join('
+')}
 
 **About ${plc.department}:**
 ${plc.description}
 
 **Services Offered:**
-${plc.services.map(s => `- ${s}`).join('\n')}
+${plc.services.map(s => `- ${s}`).join('
+')}
 
 **Contact:**
 - Email: ${plc.contact.email}
@@ -500,7 +502,8 @@ The CSE (AI & DS) program focuses on Data Science, Analytics, and AI application
 
 | Program | Code | Intake | Year |
 |---------|------|--------|------|
-${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.year} |`).join('\n')}
+${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.year} |`).join('
+')}
 
 **Other Programs:**
 - ECE: 540 intake
@@ -526,7 +529,8 @@ ${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.yea
 - ${adm.btech.lateralEntry}
 
 **Eligibility:**
-${adm.btech.eligibility.map(e => `- ${e}`).join('\n')}
+${adm.btech.eligibility.map(e => `- ${e}`).join('
+')}
 
 **M.Tech Admission:**
 - ${adm.mtech.admission}
@@ -541,35 +545,19 @@ ${adm.btech.eligibility.map(e => `- ${e}`).join('\n')}
 - Email: ${adm.coordinator.email}`
   }
 
-  // Placement
-  if (q.includes('placement') || q.includes('job') || q.includes('recruit') || q.includes('company') || q.includes('career')) {
-    const plc = SIETK_KNOWLEDGE_BASE.placements
-    return `## SIETK Placements & Training 💼
-
-**About ${plc.department}:**
-${plc.description}
-
-**Services Offered:**
-${plc.services.map(s => `- ${s}`).join('\n')}
-
-**Contact:**
-- Email: ${plc.contact.email}
-- Phone: ${plc.contact.phone}
-- Background Verification: ${plc.contact.backgroundVerification}
-
-🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`
-  }
-
   // Achievements
   if (q.includes('achievement') || q.includes('award') || q.includes('recognition') || q.includes('prathibha')) {
     const achievements = SIETK_KNOWLEDGE_BASE.achievements
     return `## SIETK Notable Achievements 🏆
 
 ${achievements.map(a => `**${a.title}${a.year ? ` (${a.year})` : ''}**
-${a.description}`).join('\n\n')}
+${a.description}`).join('
+
+')}
 
 **Accreditations:**
-${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('\n')}
+${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('
+')}
 
 🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`
   }
@@ -590,7 +578,8 @@ ${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('\n')}
 - **Status:** ${about.status}
 
 **Accreditations:**
-${about.accreditations.map(a => `- ${a}`).join('\n')}
+${about.accreditations.map(a => `- ${a}`).join('
+')}
 
 **Distance from Tirupati:** ${about.distanceFromTirupati}
 
@@ -615,16 +604,18 @@ ${mba.name} was established in ${mba.established}.
 - **Research Center:** Yes (approved by JNTUA)
 
 **Specializations:**
-${mba.specializations.map(s => `- ${s}`).join('\n')}
+${mba.specializations.map(s => `- ${s}`).join('
+')}
 
 **Activities:**
-${mba.activities.map(a => `- ${a}`).join('\n')}
+${mba.activities.map(a => `- ${a}`).join('
+')}
 
 📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
   }
 
   // MCA
-  if (q.includes('mca') || q.includes('computer application')) {
+  if (.includes('mca') || q.includes('computer application')) {
     const mca = SIETK_KNOWLEDGE_BASE.departments.mca
     return `## MCA Program at SIETK 💻
 
@@ -651,7 +642,8 @@ ${mca.name} was established in ${mca.established}.
 - Email: ${exam.controller.email}
 
 **Current Notifications (2025-26):**
-${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('\n')}
+${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('
+')}
 
 **For Results:** Visit http://siddharthgroup.ac.in/resultpage.html
 
@@ -666,7 +658,7 @@ ${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('\n')}
 
 **B.Tech Syllabus (Autonomous):**
 - **R20 Regulation:** [Download R20 Syllabus PDF](https://sietk.org/syllabus-ug.php)
-- **R23 Regulation:** [Download R23 Syllabus PDF](https://sietk.org/syllabus-ug.php)
+- **R23 Regulation:** [Download R23 Syllabus PDF](https://sietK.org/syllabus-ug.php)
 - **Previous Regulations (R19/R18):** [Archives](https://sietk.org/syllabus-ug.php)
 
 **PG Syllabus (MBA/MCA/M.Tech):**
@@ -710,7 +702,8 @@ ${about.location}
     return `## SIETK Facilities & Infrastructure 🏫
 
 **Campus Facilities:**
-${SIETK_KNOWLEDGE_BASE.facilities.map(f => `- ${f}`).join('\n')}
+${SIETK_KNOWLEDGE_BASE.facilities.map(f => `- ${f}`).join('
+')}
 
 **Special Features:**
 - 30-acre campus amid Eastern Ghats hills
