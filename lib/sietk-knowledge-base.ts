@@ -186,7 +186,7 @@ export const SIETK_KNOWLEDGE_BASE = {
       qualification: "M.Tech., (Ph.D.)",
       phone: "+91-9396931333",
       email: "coesietk@siddharthgroup.ac.in"
-.      },
+    },
     additionalControllers: [
       { name: "D. Muneendra", qualification: "M.Tech", phone: "9849897895" },
       { name: "Madhu D", qualification: "M.Tech(Ph.D)", phone: "+91-9492659320" },
@@ -298,15 +298,15 @@ export const SIETK_KNOWLEDGE_BASE = {
     "II B.Tech I SEMESTER (R23) REGULAR & SUPPLEMENTARY EXAMINATIONS OCTOBER/NOVEMBER 2025",
     "IV B.Tech I SEMESTER (R20) REGULAR & SUPPLEMENTARY EXAMINATIONS OCTOBER/NOVEMBER 2025"
   ]
-}
+};
 
 // Helper function to search the knowledge base
 export function searchKnowledgeBase(query: string): string | null {
-  const q = query.toLowerCase()
+  const q = query.toLowerCase();
 
   // Placement
   if (q.includes('placement') || q.includes('job') || q.includes('recruit') || q.includes('company') || q.includes('career') || q.includes('package') || q.includes('salary')) {
-    const plc = SIETK_KNOWLEDGE_BASE.placements
+    const plc = SIETK_KNOWLEDGE_BASE.placements;
     return `## SIETK Placements & Training 💼
 
 **Placement Highlights:**
@@ -315,29 +315,27 @@ export function searchKnowledgeBase(query: string): string | null {
 - **Placement Rate:** ${plc.stats.placementRate}
 
 **Top Recruiters:**
-${plc.stats.topRecruiters.map(r => `- ${r}`).join('
-')}
+${plc.stats.topRecruiters.map(r => `- ${r}`).join('\n')}
 
 **About ${plc.department}:**
 ${plc.description}
 
 **Services Offered:**
-${plc.services.map(s => `- ${s}`).join('
-')}
+${plc.services.map(s => `- ${s}`).join('\n')}
 
 **Contact:**
 - Email: ${plc.contact.email}
 - Phone: ${plc.contact.phone}
 - Background Verification: ${plc.contact.backgroundVerification}
 
-🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`
+🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`;
   }
 
 
 
   // Founder / Chairman / Management
   if (q.includes('founder') || q.includes('chairman') || q.includes('management') || q.includes('who created') || q.includes('who started') || q.includes('who established')) {
-    const mgmt = SIETK_KNOWLEDGE_BASE.management
+    const mgmt = SIETK_KNOWLEDGE_BASE.management;
     return `## Founder & Management 👨‍💼
 
 **Founder & Chairman:**
@@ -356,12 +354,12 @@ Dr. K. Ashok Raju is the visionary founder who established Siddharth Institute o
 - Located in Puttur, Andhra Pradesh
 - Part of Siddharth Group of Institutions
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone} | 🌐 ${SIETK_KNOWLEDGE_BASE.about.website}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone} | 🌐 ${SIETK_KNOWLEDGE_BASE.about.website}`;
   }
 
   // Principal
   if (q.includes('principal') || q.includes('head of institution')) {
-    const mgmt = SIETK_KNOWLEDGE_BASE.management
+    const mgmt = SIETK_KNOWLEDGE_BASE.management;
     return `## Principal of SIETK 👨‍🏫
 
 **Name:** ${mgmt.principal.name}
@@ -372,13 +370,13 @@ The Principal oversees academic and administrative functions of the institution.
 **Chairman:** ${mgmt.chairman.name}
 
 📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}
-📧 Email: ${SIETK_KNOWLEDGE_BASE.about.email}`
+📧 Email: ${SIETK_KNOWLEDGE_BASE.about.email}`;
   }
 
   // AI & ML / CSM
   if (q.includes('ai') || q.includes('ml') || q.includes('machine learning') || q.includes('artificial intelligence') || q.includes('csm')) {
-    const cse = SIETK_KNOWLEDGE_BASE.departments.cse
-    const csm = cse.courses.find(c => c.code === 'CSM')
+    const cse = SIETK_KNOWLEDGE_BASE.departments.cse;
+    const csm = cse.courses.find(c => c.code === 'CSM');
     return `## CSE (Artificial Intelligence & Machine Learning) - CSM
 
 **About the Program:**
@@ -402,13 +400,13 @@ The CSE (AI & ML) program at SIETK is designed to prepare students for careers i
 - Machine Learning Researcher
 - AI Solutions Architect
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone} | 🌐 ${SIETK_KNOWLEDGE_BASE.about.website}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone} | 🌐 ${SIETK_KNOWLEDGE_BASE.about.website}`;
   }
 
   // Data Science / CAD
   if (q.includes('data science') || q.includes('cad') || q.includes('ds')) {
-    const cse = SIETK_KNOWLEDGE_BASE.departments.cse
-    const cad = cse.courses.find(c => c.code === 'CAD')
+    const cse = SIETK_KNOWLEDGE_BASE.departments.cse;
+    const cad = cse.courses.find(c => c.code === 'CAD');
     return `## CSE (Artificial Intelligence & Data Science) - CAD
 
 **About the Program:**
@@ -420,13 +418,13 @@ The CSE (AI & DS) program focuses on Data Science, Analytics, and AI application
 - **Year Started:** ${cad?.year}
 - **Fee:** Rs. ${SIETK_KNOWLEDGE_BASE.fees.btech.amount.toLocaleString()} per year
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // Cloud Computing / CCC
   if (q.includes('cloud') || q.includes('ccc')) {
-    const cse = SIETK_KNOWLEDGE_BASE.departments.cse
-    const ccc = cse.courses.find(c => c.code === 'CCC')
+    const cse = SIETK_KNOWLEDGE_BASE.departments.cse;
+    const ccc = cse.courses.find(c => c.code === 'CCC');
     return `## CSE with Specialization in Cloud Computing - CCC
 
 **Key Details:**
@@ -435,13 +433,13 @@ The CSE (AI & DS) program focuses on Data Science, Analytics, and AI application
 - **Year Started:** ${ccc?.year}
 - **Fee:** Rs. ${SIETK_KNOWLEDGE_BASE.fees.btech.amount.toLocaleString()} per year
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // IoT & Cyber Security / CIC
   if (q.includes('iot') || q.includes('cyber') || q.includes('blockchain') || q.includes('cic')) {
-    const cse = SIETK_KNOWLEDGE_BASE.departments.cse
-    const cic = cse.courses.find(c => c.code === 'CIC')
+    const cse = SIETK_KNOWLEDGE_BASE.departments.cse;
+    const cic = cse.courses.find(c => c.code === 'CIC');
     return `## CSE (IoT & Cyber Security with Blockchain Technology) - CIC
 
 **Key Details:**
@@ -450,12 +448,12 @@ The CSE (AI & DS) program focuses on Data Science, Analytics, and AI application
 - **Year Started:** ${cic?.year}
 - **Fee:** Rs. ${SIETK_KNOWLEDGE_BASE.fees.btech.amount.toLocaleString()} per year
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // Fees
   if (q.includes('fee') || q.includes('cost') || q.includes('tuition') || q.includes('price')) {
-    const fees = SIETK_KNOWLEDGE_BASE.fees
+    const fees = SIETK_KNOWLEDGE_BASE.fees;
     return `## SIETK Fee Structure 💰
 
 **B.Tech Programs (All branches):**
@@ -475,35 +473,34 @@ The CSE (AI & DS) program focuses on Data Science, Analytics, and AI application
 - Scholarships available for eligible students
 - Government fee reimbursement schemes applicable
 
-📞 Contact Admissions: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact Admissions: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // HODs / Heads of Departments
   if (q.includes('hod') || q.includes('head') || q.includes('dept')) {
-    const depts = SIETK_KNOWLEDGE_BASE.departments
-    let response = `## Heads of Departments (HODs) 👨‍🏫\n\n`
+    const depts = SIETK_KNOWLEDGE_BASE.departments;
+    let response = `## Heads of Departments (HODs) 👨‍🏫\n\n`;
 
     // Check for specific department request
-    if (q.includes('civil')) return `## HOD - Civil Engineering\n\n**${depts.civil.hod}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('cse') || q.includes('computer')) return `## HOD - CSE\n\n**Dr. B. Geethavani** (Professor & HOD)\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('ece')) return `## HOD - ECE\n\n**Dr. P. Ratna Kamala**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('eee')) return `## HOD - EEE\n\n**Dr. N. Gireesh**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('mech')) return `## HOD - Mechanical\n\n**Dr. S. Sunil Kumar Reddy**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('mba')) return `## HOD - MBA\n\n**${depts.mba.head}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
-    if (q.includes('mca')) return `## HOD - MCA\n\n**${depts.mca.head}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+    if (q.includes('civil')) return `## HOD - Civil Engineering\n\n**${depts.civil.hod}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('cse') || q.includes('computer')) return `## HOD - CSE\n\n**Dr. B. Geethavani** (Professor & HOD)\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('ece')) return `## HOD - ECE\n\n**Dr. P. Ratna Kamala**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('eee')) return `## HOD - EEE\n\n**Dr. N. Gireesh**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('mech')) return `## HOD - Mechanical\n\n**Dr. S. Sunil Kumar Reddy**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('mba')) return `## HOD - MBA\n\n**${depts.mba.head}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
+    if (q.includes('mca')) return `## HOD - MCA\n\n**${depts.mca.head}**\n\n📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
 
-    return response + `Please specify which department's HOD you are looking for (e.g., "Who is HOD of Civil?").`
+    return response + 'Please specify which department\'s HOD you are looking for (e.g., "Who is HOD of Civil?").'
   }
 
   // Courses / Programs
   if (q.includes('course') || q.includes('program') || q.includes('branch') || q.includes('department')) {
-    const cse = SIETK_KNOWLEDGE_BASE.departments.cse
+    const cse = SIETK_KNOWLEDGE_BASE.departments.cse;
     return `## B.Tech Programs at SIETK 🎓
 
 | Program | Code | Intake | Year |
 |---------|------|--------|------|
-${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.year} |`).join('
-')}
+${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.year} |`).join('\n')}
 
 **Other Programs:**
 - ECE: 540 intake
@@ -514,12 +511,12 @@ ${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.yea
 
 **PG Programs:** MBA (120), MCA (120), M.Tech
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // Admission
   if (q.includes('admission') || q.includes('apply') || q.includes('eligibility') || q.includes('eamcet') || q.includes('apeapcet')) {
-    const adm = SIETK_KNOWLEDGE_BASE.admissions
+    const adm = SIETK_KNOWLEDGE_BASE.admissions;
     return `## SIETK Admission Information 📋
 
 **B.Tech Admission:**
@@ -529,8 +526,7 @@ ${cse.courses.map(c => `| ${c.name} | ${c.code || 'CSE'} | ${c.intake} | ${c.yea
 - ${adm.btech.lateralEntry}
 
 **Eligibility:**
-${adm.btech.eligibility.map(e => `- ${e}`).join('
-')}
+${adm.btech.eligibility.map(e => `- ${e}`).join('\n')}
 
 **M.Tech Admission:**
 - ${adm.mtech.admission}
@@ -542,29 +538,26 @@ ${adm.btech.eligibility.map(e => `- ${e}`).join('
 **Contact:**
 - Coordinator: ${adm.coordinator.name}
 - Phone: ${adm.coordinator.phone}
-- Email: ${adm.coordinator.email}`
+- Email: ${adm.coordinator.email}`;
   }
 
   // Achievements
   if (q.includes('achievement') || q.includes('award') || q.includes('recognition') || q.includes('prathibha')) {
-    const achievements = SIETK_KNOWLEDGE_BASE.achievements
+    const achievements = SIETK_KNOWLEDGE_BASE.achievements;
     return `## SIETK Notable Achievements 🏆
 
 ${achievements.map(a => `**${a.title}${a.year ? ` (${a.year})` : ''}**
-${a.description}`).join('
-
-')}
+${a.description}`).join('\n\n')}
 
 **Accreditations:**
-${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('
-')}
+${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('\n')}
 
-🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`
+🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`;
   }
 
   // About SIETK - only match if explicitly asking about the college overview
   if (q.includes('about sietk') || q.includes('about the college') || q.includes('what is sietk') || q.includes('overview') || q.includes('introduction') || (q.includes('about') && !q.includes('curriculum') && !q.includes('subject') && !q.includes('course'))) {
-    const about = SIETK_KNOWLEDGE_BASE.about
+    const about = SIETK_KNOWLEDGE_BASE.about;
     return `## About SIETK 🏛️
 
 **${about.name}** is a premier engineering institution.
@@ -578,20 +571,19 @@ ${SIETK_KNOWLEDGE_BASE.about.accreditations.map(a => `- ${a}`).join('
 - **Status:** ${about.status}
 
 **Accreditations:**
-${about.accreditations.map(a => `- ${a}`).join('
-')}
+${about.accreditations.map(a => `- ${a}`).join('\n')}
 
 **Distance from Tirupati:** ${about.distanceFromTirupati}
 
 **Contact:**
 - Phone: ${about.phone}
 - Email: ${about.email}
-- Website: ${about.website}`
+- Website: ${about.website}`;
   }
 
   // MBA
   if (q.includes('mba') || q.includes('business administration') || q.includes('management')) {
-    const mba = SIETK_KNOWLEDGE_BASE.departments.mba
+    const mba = SIETK_KNOWLEDGE_BASE.departments.mba;
     return `## MBA Program at SIETK 📊
 
 **About:**
@@ -604,19 +596,17 @@ ${mba.name} was established in ${mba.established}.
 - **Research Center:** Yes (approved by JNTUA)
 
 **Specializations:**
-${mba.specializations.map(s => `- ${s}`).join('
-')}
+${mba.specializations.map(s => `- ${s}`).join('\n')}
 
 **Activities:**
-${mba.activities.map(a => `- ${a}`).join('
-')}
+${mba.activities.map(a => `- ${a}`).join('\n')}
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // MCA
-  if (.includes('mca') || q.includes('computer application')) {
-    const mca = SIETK_KNOWLEDGE_BASE.departments.mca
+  if (q.includes('mca') || q.includes('computer application')) {
+    const mca = SIETK_KNOWLEDGE_BASE.departments.mca;
     return `## MCA Program at SIETK 💻
 
 **About:**
@@ -627,12 +617,12 @@ ${mca.name} was established in ${mca.established}.
 - **Fee:** Rs. ${SIETK_KNOWLEDGE_BASE.fees.mca.amount.toLocaleString()} per year
 - **Head:** ${mca.head}
 
-📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+📞 Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
   // Exam / Results
   if (q.includes('exam') || q.includes('result') || q.includes('notification') || q.includes('timetable') || q.includes('time table')) {
-    const exam = SIETK_KNOWLEDGE_BASE.examCell
+    const exam = SIETK_KNOWLEDGE_BASE.examCell;
     return `## Exam Cell Information 📝
 
 **Controller of Examinations:**
@@ -642,12 +632,11 @@ ${mca.name} was established in ${mca.established}.
 - Email: ${exam.controller.email}
 
 **Current Notifications (2025-26):**
-${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('
-')}
+${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('\n')}
 
 **For Results:** Visit http://siddharthgroup.ac.in/resultpage.html
 
-📞 Contact: ${exam.email}`
+📞 Contact: ${exam.email}`;
   }
 
   // Regulation / Syllabus / Curriculum
@@ -658,7 +647,7 @@ ${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('
 
 **B.Tech Syllabus (Autonomous):**
 - **R20 Regulation:** [Download R20 Syllabus PDF](https://sietk.org/syllabus-ug.php)
-- **R23 Regulation:** [Download R23 Syllabus PDF](https://sietK.org/syllabus-ug.php)
+- **R23 Regulation:** [Download R23 Syllabus PDF](https://sietk.org/syllabus-ug.php)
 - **Previous Regulations (R19/R18):** [Archives](https://sietk.org/syllabus-ug.php)
 
 **PG Syllabus (MBA/MCA/M.Tech):**
@@ -667,12 +656,12 @@ ${SIETK_KNOWLEDGE_BASE.currentNotifications.map(n => `- ${n}`).join('
 **Academic Regulations:**
 - [View All Regulations](https://sietk.org/academic-regulations.php)
 
-**Note:** The college website hosts these PDFs. If a link doesn't open, please visit https://sietk.org and check the 'Academics' menu.`
+**Note:** The college website hosts these PDFs. If a link doesn't open, please visit https://sietk.org and check the 'Academics' menu.`;
   }
 
   // Contact / Location
   if (q.includes('contact') || q.includes('phone') || q.includes('address') || q.includes('location') || q.includes('coordinate') || q.includes('map') || q.includes('where')) {
-    const about = SIETK_KNOWLEDGE_BASE.about
+    const about = SIETK_KNOWLEDGE_BASE.about;
     return `## SIETK Location & Contact 📍
 
 **Address:**
@@ -694,7 +683,7 @@ ${about.location}
 **Other Contacts:**
 - Admissions: 08577-264999
 - Placements: 9000220230
-- Exam Cell: +91-9396931333`
+- Exam Cell: +91-9396931333`;
   }
 
   // Facilities
@@ -702,18 +691,17 @@ ${about.location}
     return `## SIETK Facilities & Infrastructure 🏫
 
 **Campus Facilities:**
-${SIETK_KNOWLEDGE_BASE.facilities.map(f => `- ${f}`).join('
-')}
+${SIETK_KNOWLEDGE_BASE.facilities.map(f => `- ${f}`).join('\n')}
 
 **Special Features:**
 - 30-acre campus amid Eastern Ghats hills
 - IIT Tirupati collaboration for CSE mentorship
 - AICTE IDEA Lab
 
-ðŸ“ž Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`
+Contact: ${SIETK_KNOWLEDGE_BASE.about.phone}`;
   }
 
-  return null
+  return null;
 }
 
 // Get system prompt for the chatbot
@@ -725,5 +713,5 @@ Use the following knowledge base to answer questions:
 
 ${JSON.stringify(SIETK_KNOWLEDGE_BASE, null, 2)}
 
-If the information is not in the knowledge base, say "I don't have that information, please check the official website https://sietk.org".`
+If the information is not in the knowledge base, say "I don't have that information, please check the official website https://sietk.org".`;
 }
