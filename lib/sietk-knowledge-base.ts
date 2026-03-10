@@ -101,7 +101,7 @@ export const SIETK_KNOWLEDGE_BASE = {
       established: 2001,
       intake: 120,
       nbaAccredited: true,
-      hod: "Prof. C. Siva Kumar Prasad" // Added verified HOD
+      hod: "Prof. C. Siva Kumar Prasad"
     },
     csit: {
       name: "Computer Science & Information Technology",
@@ -330,8 +330,6 @@ ${plc.services.map(s => `- ${s}`).join('\n')}
 
 🌐 Visit: ${SIETK_KNOWLEDGE_BASE.about.website}`;
   }
-
-
 
   // Founder / Chairman / Management
   if (q.includes('founder') || q.includes('chairman') || q.includes('management') || q.includes('who created') || q.includes('who started') || q.includes('who established')) {
