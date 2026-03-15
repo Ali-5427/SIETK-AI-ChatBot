@@ -1,4 +1,4 @@
-import { SIETK_KNOWLEDGE_BASE } from './sietk_knowledge_base';
+import { SIETK_KNOWLEDGE } from './Final Knowledge Base';
 import { FACULTY_DATA } from './faculty_data';
 import { CURRICULUM_DATA } from './curriculum_data';
 
@@ -32,13 +32,13 @@ export function searchKnowledgeBase(query: string, department?: string, category
         return searchCurriculum(lowerQuery, department);
       case 'fees':
         // Fee information is spread out, so we search the whole knowledge base
-        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE, lowerQuery));
+        return processFindDataResult(findData(SIETK_KNOWLEDGE, lowerQuery));
       case 'admissions':
-        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.admissions, lowerQuery));
+        return processFindDataResult(findData(SIETK_KNOWLEDGE.admissions, lowerQuery));
       case 'placements':
-        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.placements_and_training, lowerQuery));
+        return processFindDataResult(findData(SIETK_KNOWLEDGE.placements_and_training, lowerQuery));
       case 'contact':
-        return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE.college_overview, lowerQuery));
+        return processFindDataResult(findData(SIETK_KNOWLEDGE.college_overview, lowerQuery));
     }
   }
 
@@ -50,17 +50,17 @@ export function searchKnowledgeBase(query: string, department?: string, category
     return searchCurriculum(lowerQuery, department);
   }
   if (lowerQuery.includes('fee') || lowerQuery.includes('scholarship')) {
-    return processFindDataResult(findData(SIETK_KNOWLEDGE_BASE, lowerQuery));
+    return processFindDataResult(findData(SIETK_KNOWLEDGE, lowerQuery));
   }
   if (lowerQuery.includes('admission') || lowerQuery.includes('intake')) {
-    return JSON.stringify(SIETK_KNOWLEDGE_BASE.admissions, null, 2);
+    return JSON.stringify(SIETK_KNOWLEDGE.admissions, null, 2);
   }
    if (lowerQuery.includes('placement') || lowerQuery.includes('recruiter')) {
-    return JSON.stringify(SIETK_KNOWLEDGE_BASE.placements_and_training, null, 2);
+    return JSON.stringify(SIETK_KNOWLEDGE.placements_and_training, null, 2);
   }
 
   // Fallback to a general search across the main knowledge base
-  const result = findData(SIETK_KNOWLEDGE_BASE, lowerQuery);
+  const result = findData(SIETK_KNOWLEDGE, lowerQuery);
   return processFindDataResult(result);
 }
 
