@@ -1,0 +1,596 @@
+
+{
+    "metadata": {
+      "language": "en",
+      "viewport": "width=device-width, initial-scale=1",
+      "title": "SIETK College",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-faf0-733b-912c-46deed5c5862",
+      "sourceURL": "https://sietk.org",
+      "url": "https://sietk.org/",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:39:13.003Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Sri Indu Engineering College (SIETK)",
+      "company_description": "SIETK is a premier educational institution offering a variety of programs in engineering, management, and technology disciplines. It aims to provide quality education and is focused on student welfare and career development."
+    }
+  }
+  
+  {
+    "metadata": {
+      "viewport": "width=device-width, initial-scale=1",
+      "language": "en",
+      "title": "SIETK College",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa10-e401298536fd",
+      "sourceURL": "https://sietk.org/sports_sietk.php",
+      "url": "https://sietk.org/sports_sietk.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:49:34.860Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering and Technology (SIETK)",
+      "company_description": "SIETK is an educational institution that offers undergraduate and postgraduate programs in various engineering disciplines. It aims to develop students' skills and prepare them for the future through a well-structured academic framework, research initiatives, and student welfare programs."
+    }
+  }
+  
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-060b3bd2b5ff",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2021-2022/R19/19AG0707%20Agricultural%20Process%20Engineering.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2021-2022/R19/19AG0707%20Agricultural%20Process%20Engineering.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:31:56.275Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous institution located in Siddharth Nagar, Narayanavanam Road, offering engineering courses including Agricultural Process Engineering."
+    }
+  }
+  
+  
+  #4
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0337%20-Mechatronics%20&%20Robotics.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-3e3ac142f8ef",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0337%20-Mechatronics%20&%20Robotics.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0337%20-Mechatronics%20&%20Robotics.pdf",
+      "statusCode": 200,
+      "numPages": 4,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:46:52.564Z",
+      "creditsUsed": 8
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "Approved by AICTE, New Delhi & Affiliated to JNTUA, Ananthapuramu. Accredited by NBA & NAAC with ‘A’ Grade. An ISO 9001:2008 Certified Institution. Located at Siddharth Nagar, Narayavanam Road, PUTTUR-517 583."
+    }
+  }
+  
+  
+  #5
+  QUESTION BANK
+  sietk.org/downloads/QB-2/I%20B.Tech%20I%20Sem/19HS0810-COMMUNICATIVE%20ENGLISH.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-45aff9c080ec",
+      "sourceURL": "https://sietk.org/downloads/QB-2/I%20B.Tech%20I%20Sem/19HS0810-COMMUNICATIVE%20ENGLISH.pdf",
+      "url": "https://sietk.org/downloads/QB-2/I%20B.Tech%20I%20Sem/19HS0810-COMMUNICATIVE%20ENGLISH.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:43:37.813Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Group of Institutions",
+      "company_description": "Siddharth Nagar, Narayanavanam Road, Puttur – 517583. Offers a Question Bank for the subject 'Communicative English' for B.Tech students across various branches."
+    }
+  }
+  
+  
+  #6
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2021-2022/2-2/20ME0307-CADCAM.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-4b5de89143ee",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2021-2022/2-2/20ME0307-CADCAM.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2021-2022/2-2/20ME0307-CADCAM.pdf",
+      "statusCode": 200,
+      "numPages": 4,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T20:52:01.273Z",
+      "creditsUsed": 8
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "Siddharth Nagar, Narayavanam Road, PUTTUR-517 583"
+    }
+  }
+  
+  
+  #7
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2020-2021/19EE0240.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-5848b853291b",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021/19EE0240.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021/19EE0240.pdf",
+      "statusCode": 200,
+      "numPages": 8,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:37:15.837Z",
+      "creditsUsed": 12
+    },
+    "json": {
+      "company_name": "Siddharth Group of Institutions",
+      "company_description": "Located in Puttur, specializes in technical education with various programs including engineering courses."
+    }
+  }
+  
+  
+  #8
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/R20/II-I%20MCA/20MC9119%20-%20SOFTWARE%20TESTING%20QUESTION%20BANK.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-5c59b5a0efba",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/R20/II-I%20MCA/20MC9119%20-%20SOFTWARE%20TESTING%20QUESTION%20BANK.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/R20/II-I%20MCA/20MC9119%20-%20SOFTWARE%20TESTING%20QUESTION%20BANK.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T18:30:28.495Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An educational institution located in Puttur, Andhra Pradesh, focusing on engineering and technology education."
+    }
+  }
+  
+  
+  #9
+  SIETK College
+  sietk.org/mech_dept.php
+  {
+    "metadata": {
+      "language": "en",
+      "viewport": "width=device-width, initial-scale=1",
+      "title": "SIETK College",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa11-6a25eea71646",
+      "sourceURL": "https://sietk.org/mech_dept.php",
+      "url": "https://sietk.org/mech_dept.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T15:07:21.963Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "The department of MECHANICAL ENGINEERING is one of the vibrant departments of Siddharth Institute of Engineering & Technology, which offers B.Tech Mechanical Engineering and M.Tech Thermal Engineering. The department was established in 2004 and has a rich faculty with a strong emphasis on research and industry collaboration."
+    }
+  }
+  
+  
+  #10
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2020-2021/19EE0242.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-78f24e278c8e",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021/19EE0242.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021/19EE0242.pdf",
+      "statusCode": 200,
+      "numPages": 10,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:37:32.897Z",
+      "creditsUsed": 14
+    },
+    "json": {
+      "company_name": "Siddharth Group of Institutions",
+      "company_description": "An autonomous institution located in Puttur, focused on providing education in engineering and technology."
+    }
+  }
+  
+  
+  #11
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0325%20Automobile%20Engines.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-770519afed30",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0325%20Automobile%20Engines.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2021-2022/R18/18ME0325%20Automobile%20Engines.pdf",
+      "statusCode": 200,
+      "numPages": 22,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:46:47.710Z",
+      "creditsUsed": 26
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "Siddharth Institute of Engineering & Technology is an autonomous institution located in Puttur, Andhra Pradesh, India, focusing on engineering education."
+    }
+  }
+  
+  
+  #12
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2020-2021/R19%20II-II/19CS0510-Object%20Oriented%20Programming%20through%20Java.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-92237176cabe",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021/R19%20II-II/19CS0510-Object%20Oriented%20Programming%20through%20Java.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021/R19%20II-II/19CS0510-Object%20Oriented%20Programming%20through%20Java.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:34:34.193Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous engineering institute located in Puttur, specializing in computer science and engineering."
+    }
+  }
+  
+  
+  #13
+  MergedFile
+  sietk.org/downloads/Question%20Bank/2021-2022/2-1/20CE0164-%20Mechanics%20of%20Solids.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-9893a4aa4781",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2021-2022/2-1/20CE0164-%20Mechanics%20of%20Solids.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2021-2022/2-1/20CE0164-%20Mechanics%20of%20Solids.pdf",
+      "statusCode": 200,
+      "numPages": 10,
+      "title": "MergedFile",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:07:33.584Z",
+      "creditsUsed": 14
+    },
+    "json": {
+      "company_name": "Dr. F. Anand Raju, A. Asha & G. Yamini",
+      "company_description": "Prepared the course material on engineering topics such as stresses, strains, bending moments, and cylindrical structures."
+    }
+  }
+  
+  
+  #14
+  SIETK College
+  sietk.org/dpty_r&d_deen.php
+  {
+    "metadata": {
+      "title": "SIETK College",
+      "language": "en",
+      "viewport": "width=device-width, initial-scale=1",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa11-b767f511bc40",
+      "sourceURL": "https://sietk.org/dpty_r&d_deen.php",
+      "url": "https://sietk.org/dpty_r&d_deen.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:43:39.255Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology (SIETK)",
+      "company_description": "SIETK is an educational institution located in Puttur, Andhra Pradesh, focused on providing engineering education and research opportunities across various disciplines."
+    }
+  }
+  
+  
+  #15
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2020-2021%20PG/19EE2128.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-d0aa2d05641f",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021%20PG/19EE2128.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021%20PG/19EE2128.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T19:37:59.840Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "IDDHARDTH GROUP OF INSTITUTIONS",
+      "company_description": "Located at Siddharth Nagar, Narayanavanam Road – 517583, offering various educational programs including a course in Waste to Energy."
+    }
+  }
+  
+  
+  #16
+  SIETK College
+  sietk.org/pio_sietk.php
+  {
+    "metadata": {
+      "language": "en",
+      "viewport": "width=device-width, initial-scale=1",
+      "title": "SIETK College",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa11-d4913b47c909",
+      "sourceURL": "https://sietk.org/pio_sietk.php",
+      "url": "https://sietk.org/pio_sietk.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:47:44.821Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering and Technology",
+      "company_description": "Siddharth Institute of Engineering and Technology is dedicated to providing quality education in various engineering disciplines, with a focus on academic excellence and student welfare."
+    }
+  }
+  
+  
+  #17
+  QUESTION BANK R25
+  sietk.org/downloads/Question%20Bank/R20/I%20M.Tech%20I%20R25/25EE2111.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-f14360a729b0",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/R20/I%20M.Tech%20I%20R25/25EE2111.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/R20/I%20M.Tech%20I%20R25/25EE2111.pdf",
+      "statusCode": 200,
+      "numPages": 4,
+      "title": "QUESTION BANK                                                                                                                                R25",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T17:17:06.313Z",
+      "creditsUsed": 8
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "Autonomous institute located in Siddharth Nagar, Narayanavanam Road specializing in engineering and technology courses, particularly in AI techniques within electrical engineering."
+    }
+  }
+  
+  
+  #18
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/I%20B.Tech%20I%20Sem/23ME0301%20-%20Engineering%20Graphics%20QB.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa11-f57425bdb6a4",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/I%20B.Tech%20I%20Sem/23ME0301%20-%20Engineering%20Graphics%20QB.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/I%20B.Tech%20I%20Sem/23ME0301%20-%20Engineering%20Graphics%20QB.pdf",
+      "statusCode": 200,
+      "numPages": 8,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T19:55:36.341Z",
+      "creditsUsed": 12
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous engineering institution located in Puttur, specializing in various engineering disciplines including Electronic and Communication Engineering, Computer Science, Electrical, and others."
+    }
+  }
+  
+  
+  #19
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/I%20MTECH-I%20SEM/CIVIL/19CE1011-STRUCTURAL%20HEALTH%20MONITORING.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-0565ed155391",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/I%20MTECH-I%20SEM/CIVIL/19CE1011-STRUCTURAL%20HEALTH%20MONITORING.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/I%20MTECH-I%20SEM/CIVIL/19CE1011-STRUCTURAL%20HEALTH%20MONITORING.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T19:41:31.897Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous engineering institute located in Puttur, focusing on structural health monitoring and other engineering disciplines."
+    }
+  }
+  
+  
+  #20
+  SIETK College
+  sietk.org/about_chairman.php
+  {
+    "metadata": {
+      "title": "SIETK College",
+      "language": "en",
+      "viewport": "width=device-width, initial-scale=1",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa12-0841c43a798b",
+      "sourceURL": "https://sietk.org/about_chairman.php",
+      "url": "https://sietk.org/about_chairman.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:39:17.393Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering and Technology (SIETK)",
+      "company_description": "SIETK is an educational institution that focuses on engineering and management education, committed to making these opportunities available to students, especially from rural backgrounds."
+    }
+  }
+  
+  
+  #21
+  QUESTION BANK
+  sietk.org/downloads/QB-2022/I%20B.Tech%20I%20Sem/Principles%20of%20Electrical%20Engineering(20EE0250).pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-2ba9bdaeec15",
+      "sourceURL": "https://sietk.org/downloads/QB-2022/I%20B.Tech%20I%20Sem/Principles%20of%20Electrical%20Engineering(20EE0250).pdf",
+      "url": "https://sietk.org/downloads/QB-2022/I%20B.Tech%20I%20Sem/Principles%20of%20Electrical%20Engineering(20EE0250).pdf",
+      "statusCode": 200,
+      "numPages": 7,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:12:38.451Z",
+      "creditsUsed": 11
+    },
+    "json": {
+      "company_name": "Siddarth Institute of Engineering and Technology",
+      "company_description": "Autonomous institute approved by AICTE, affiliated to JNTUA, Ananthapuramu. Accredited by NBA and NAAC with ‘A’ Grade."
+    }
+  }
+  
+  
+  #22
+  SIETK College
+  sietk.org/eee_dept.php
+  {
+    "metadata": {
+      "title": "SIETK College",
+      "viewport": "width=device-width, initial-scale=1",
+      "language": "en",
+      "favicon": "https://sietk.org/images/sietk-logo.ico",
+      "scrapeId": "019cfe01-fb73-750d-aa12-343ff447fddf",
+      "sourceURL": "https://sietk.org/eee_dept.php",
+      "url": "https://sietk.org/eee_dept.php",
+      "statusCode": 200,
+      "contentType": "text/html",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T13:44:39.252Z",
+      "creditsUsed": 5
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering and Technology (SIETK)",
+      "company_description": "SIETK is a premier educational institution that offers undergraduate and postgraduate programs across various engineering disciplines, emphasizing quality technical education, research, and producing socially responsible engineers."
+    }
+  }
+  
+  
+  #23
+  QUESTION BANK
+  sietk.org/downloads/Question%20Bank/2020-2021/19ME0304.pdf
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-3a8baebd6e7d",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021/19ME0304.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021/19ME0304.pdf",
+      "statusCode": 200,
+      "numPages": 10,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:37:13.438Z",
+      "creditsUsed": 14
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous engineering institution located in Puttur, offering various engineering courses."
+    }
+  }
+  
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-410440f79515",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2020-2021/III-II/18CE0127%20Elements%20of%20Road%20Traffic%20Safety.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2020-2021/III-II/18CE0127%20Elements%20of%20Road%20Traffic%20Safety.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "Microsoft Word - 18CE0127- ERTS-question bank",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T21:53:54.028Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Siddharth Institute of Engineering & Technology",
+      "company_description": "An autonomous engineering institution located at Siddharth Nagar, Narayanavanam Road, Puttur, providing courses in various engineering disciplines."
+    }
+  }
+  
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-49cfe885c6f6",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/2022-23/3-1/20ME0333-AUTOMOBILE%20ENGINEERING.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/2022-23/3-1/20ME0333-AUTOMOBILE%20ENGINEERING.pdf",
+      "statusCode": 200,
+      "numPages": 6,
+      "title": "QUESTION BANK",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T20:32:38.463Z",
+      "creditsUsed": 10
+    },
+    "json": {
+      "company_name": "Siddharth Group of Institutions",
+      "company_description": "Question bank for B.Tech - ME specializing in various aspects of automobile engineering."
+    }
+  }
+  
+  {
+    "metadata": {
+      "scrapeId": "019cfe01-fb73-750d-aa12-565b3b67c6a7",
+      "sourceURL": "https://sietk.org/downloads/Question%20Bank/II%20MTECH%20I%20SEM/SE/18EE2128%20-Waste%20to%20Energy.pdf",
+      "url": "https://sietk.org/downloads/Question%20Bank/II%20MTECH%20I%20SEM/SE/18EE2128%20-Waste%20to%20Energy.pdf",
+      "statusCode": 200,
+      "numPages": 5,
+      "title": "Subject : Waste to Energy                                                                            Course : II M.Tech",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-03-17T19:52:54.328Z",
+      "creditsUsed": 9
+    },
+    "json": {
+      "company_name": "Question Bank",
+      "company_description": "A structured collection of questions across various units related to waste management, biomass energy, gasification, and combustion processes."
+    }
+  }
+  
